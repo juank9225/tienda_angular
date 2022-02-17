@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.models';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -13,6 +14,7 @@ export class ProductsComponent implements OnInit {
   myShoppingCart: Product[] = [];
   total = 0;
   products : Product[] = [];
+  today = new Date();
 
   constructor(
     private storeService: StoreService,
