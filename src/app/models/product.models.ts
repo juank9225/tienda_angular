@@ -3,7 +3,13 @@ export interface Product{
   id:String;
   title:String;
   price:number;
-  image:String;
+  images:String[];
   description: String;
-  category:String;
+  category:Category;
+}
+
+export interface Category{
+
+  id:String;
+  name:String;
 }
