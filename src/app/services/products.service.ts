@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Product} from '../models/product.models'
+import { Product, ProductDTO } from '../models/product.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+
+  url:string ='https://young-sands-07814.herokuapp.com/api/products';
 
   constructor(
     private http: HttpClient
@@ -13,5 +15,9 @@ export class ProductsService {
 
   getAllProducts(){
     return this.http.get<Product[]>('https://young-sands-07814.herokuapp.com/api/products');
+  }
+
+  postProducto(data : ProductDTO){
+    return this.http.post<Product>(this.url, data);
   }
 }

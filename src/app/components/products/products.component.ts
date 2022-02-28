@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product.models';
+import { Product, ProductDTO } from '../../models/product.models';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
 import { Data } from '@angular/router';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'app-products',
@@ -36,5 +37,20 @@ export class ProductsComponent implements OnInit {
     //this.myShoppingCart.push(product);
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
+  }
+
+  createNewProduct(){
+    const product: ProductDTO = {
+      title:'Nuevo Producto',
+      images: [],
+      price: 1000,
+      description: 'bla bla bla...',
+      categoryId: 2
+    };
+
+    this.productsService.postProducto(product).subscribe(data=>{
+      console.log('Creacion: ',data);
+      this.products.unshift(data);//insertar en la primera posicion del array el producto nuevo
+    });
   }
 }

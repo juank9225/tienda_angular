@@ -11,4 +11,5 @@
   <app-product [myProduct]="product" *ngFor="let product of products"
    (addedProduct)="onAddToShoppingCart($event)"></app-product>
 </div>
+<button (click)="createNewProduct()">Cearte</button>
 
